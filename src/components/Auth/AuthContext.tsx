@@ -46,6 +46,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // 模拟登录过程 - 实际应用中应该替换为真实API调用
       await new Promise(resolve => setTimeout(resolve, 1000));
       
+      // 在实际应用中，应该使用密码进行身份验证
+      // 这里只是模拟，所以密码参数没有实际使用
+      console.log(`Authenticating with password (length: ${password.length})`);
+      
       // 模拟返回用户数据
       const mockUser = {
         id: '123',

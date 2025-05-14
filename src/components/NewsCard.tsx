@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { NewsArticle } from '@/data/mockData';
 
@@ -8,7 +7,7 @@ interface NewsCardProps {
 }
 
 const NewsCard = ({ article, featured = false }: NewsCardProps) => {
-  const { id, title, summary, category, imageUrl, author, publishDate } = article;
+  const { id, title, summary, category, author, publishDate } = article;
   
   const formattedDate = new Date(publishDate).toLocaleDateString('en-US', {
     year: 'numeric',

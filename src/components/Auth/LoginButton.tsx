@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { useAuth } from './AuthContext';
 import LoginModal from './LoginModal';
+import Image from 'next/image';
 
 const LoginButton = () => {
   const { user, isAuthenticated, logout } = useAuth();
@@ -41,10 +41,12 @@ const LoginButton = () => {
         >
           <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200">
             {user.avatar ? (
-              <img
+              <Image
                 src={user.avatar}
                 alt={user.name}
                 className="w-full h-full object-cover"
+                width={32}
+                height={32}
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-blue-600 text-white font-semibold">

@@ -47,7 +47,7 @@ export default function AboutPage() {
           
           <h2 className="text-xl font-semibold mt-6 mb-4">Contact Us</h2>
           <p className="mb-4">
-            We value your feedback and would love to hear from you. If you have any questions, comments, or story tips, please don't hesitate to reach out to us at <a href="mailto:contact@newsnow.example.com" className="text-blue-600 hover:underline">contact@newsnow.example.com</a>.
+            We value your feedback and would love to hear from you. If you have any questions, comments, or story tips, please don&apos;t hesitate to reach out to us at <a href="mailto:contact@newsnow.example.com" className="text-blue-600 hover:underline">contact@newsnow.example.com</a>.
           </p>
           
           <p className="mt-8 text-gray-600">

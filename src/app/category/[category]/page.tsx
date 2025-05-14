@@ -2,10 +2,30 @@ import { notFound } from 'next/navigation';
 import { newsArticles, categories } from '@/data/mockData';
 import NewsGrid from '@/components/NewsGrid';
 import Link from 'next/link';
+import { Metadata } from 'next';
 
 interface CategoryPageProps {
   params: {
     category: string;
+  };
+  searchParams: Record<string, string | string[] | undefined>;
+}
+
+export function generateMetadata({ params }: CategoryPageProps): Metadata {
+  const categoryParam = params.category;
+  const categoryName = categories.find(
+    cat => cat.toLowerCase() === categoryParam.toLowerCase()
+  );
+
+  if (!categoryName) {
+    return {
+      title: 'Category Not Found'
+    };
+  }
+
+  return {
+    title: `${categoryName} News - NewsNow`,
+    description: `Latest news and articles in the ${categoryName} category`,
   };
 }
 

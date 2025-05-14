@@ -1,10 +1,29 @@
 import { notFound } from 'next/navigation';
 import { newsArticles } from '@/data/mockData';
 import Link from 'next/link';
+import { Metadata } from 'next';
 
 interface ArticlePageProps {
   params: {
     id: string;
+  };
+  searchParams: Record<string, string | string[] | undefined>;
+}
+
+export function generateMetadata({ params }: ArticlePageProps): Metadata {
+  const article = newsArticles.find(
+    article => article.id === parseInt(params.id)
+  );
+
+  if (!article) {
+    return {
+      title: 'Article Not Found'
+    };
+  }
+
+  return {
+    title: article.title,
+    description: article.summary,
   };
 }
 

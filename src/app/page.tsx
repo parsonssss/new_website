@@ -1,17 +1,12 @@
 import FeaturedNews from '@/components/FeaturedNews';
 import CategorySection from '@/components/CategorySection';
-import { newsArticles, categories } from '@/data/mockData';
+import { newsArticles } from '@/data/mockData';
 
 export default function Home() {
   // Get articles for different categories
   const getCategoryArticles = (category: string) => {
     return newsArticles.filter(article => article.category === category);
   };
-
-  // Get latest articles (showing the first 8)
-  const latestArticles = [...newsArticles]
-    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
-    .slice(0, 8);
 
   return (
     <div className="min-h-screen">
