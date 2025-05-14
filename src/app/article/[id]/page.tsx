@@ -3,14 +3,21 @@ import { newsArticles } from '@/data/mockData';
 import Link from 'next/link';
 import { Metadata } from 'next';
 
-interface ArticlePageProps {
-  params: {
-    id: string;
-  };
-  searchParams: Record<string, string | string[] | undefined>;
+type Params = {
+  id: string;
+};
+
+export function generateStaticParams(): Array<Params> {
+  return newsArticles.map(article => ({
+    id: article.id.toString(),
+  }));
 }
 
-export function generateMetadata({ params }: ArticlePageProps): Metadata {
+export function generateMetadata({ 
+  params 
+}: { 
+  params: Params; 
+}): Metadata {
   const article = newsArticles.find(
     article => article.id === parseInt(params.id)
   );
@@ -27,13 +34,11 @@ export function generateMetadata({ params }: ArticlePageProps): Metadata {
   };
 }
 
-export function generateStaticParams() {
-  return newsArticles.map(article => ({
-    id: article.id.toString(),
-  }));
-}
-
-export default async function ArticlePage({ params }: ArticlePageProps) {
+export default function ArticlePage({ 
+  params 
+}: { 
+  params: Params; 
+}) {
   const id = params.id;
   const article = newsArticles.find(
     article => article.id === parseInt(id)

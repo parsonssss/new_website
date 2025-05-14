@@ -4,14 +4,21 @@ import NewsGrid from '@/components/NewsGrid';
 import Link from 'next/link';
 import { Metadata } from 'next';
 
-interface CategoryPageProps {
-  params: {
-    category: string;
-  };
-  searchParams: Record<string, string | string[] | undefined>;
+type Params = {
+  category: string;
+};
+
+export function generateStaticParams(): Array<Params> {
+  return categories.map(category => ({
+    category: category.toLowerCase(),
+  }));
 }
 
-export function generateMetadata({ params }: CategoryPageProps): Metadata {
+export function generateMetadata({ 
+  params 
+}: { 
+  params: Params; 
+}): Metadata {
   const categoryParam = params.category;
   const categoryName = categories.find(
     cat => cat.toLowerCase() === categoryParam.toLowerCase()
@@ -29,13 +36,11 @@ export function generateMetadata({ params }: CategoryPageProps): Metadata {
   };
 }
 
-export function generateStaticParams() {
-  return categories.map(category => ({
-    category: category.toLowerCase(),
-  }));
-}
-
-export default async function CategoryPage({ params }: CategoryPageProps) {
+export default function CategoryPage({ 
+  params 
+}: { 
+  params: Params;
+}) {
   const categoryParam = params.category;
   
   // Find the category (case-insensitive)
