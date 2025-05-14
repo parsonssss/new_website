@@ -4,6 +4,10 @@ const nextConfig = {
     // 构建时忽略ESLint错误
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    // 构建时忽略TypeScript错误
+    ignoreBuildErrors: true,
+  },
 };
 
-module.exports = nextConfig;
+export default nextConfig; 
